@@ -40,7 +40,7 @@ Game over.
 
 
 
-![alt text](https://imgur.com/gallery/EQ7wlM9)
+![alt text](https://i.imgur.com/DRSMEvh.png)
 
 
 
