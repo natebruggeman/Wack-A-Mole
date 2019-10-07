@@ -3,7 +3,7 @@
 $('#start').on('click', () =>{
 	console.log('button works');
 	game.setTimer();
-	game.setRandom();
+	// game.setRandom();
 
 });
 
@@ -13,6 +13,7 @@ $('button').on('click', (e) => {
   const color = $(e.target).css('backgroundColor')
   game.scoreRandom(color)
   const blank = $(e.target).css('background-color', 'white')
+  // game.setRandom()
 
 })
 
@@ -29,11 +30,15 @@ const game = {
 		const interval = setInterval(() => {
 			if(this.time === 0){
 				clearInterval(interval)
+				$('button').css('background-color', 'white')
 
 
 				} else {
 					this.time--
 					$timer.text(`Timer: ${this.time}`)
+					$('button').css('background-color', 'white')
+					game.setRandom()
+
 
 				}
 
