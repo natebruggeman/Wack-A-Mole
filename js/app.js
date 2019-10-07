@@ -1,9 +1,21 @@
+// const enterName1 = prompt("Enter your name Player 1!", "Name")
+// const $name1 = $("#player1")
+// if (enterName1 != null){
+// 	$name1.text(enterName1)
+// }
+
+// const enterName2 = prompt("Enter your name Player 2!", "Name")
+// const $name2 = $("#player2")
+// if (enterName2 != null){
+// 	$name2.text(enterName2)
+// }
+
+
 
 
 $('#start').on('click', () =>{
 	console.log('button works');
 	game.setTimer();
-	// game.setRandom();
 
 });
 
@@ -13,7 +25,6 @@ $('button').on('click', (e) => {
   const color = $(e.target).css('backgroundColor')
   game.scoreRandom(color)
   const blank = $(e.target).css('background-color', 'white')
-  // game.setRandom()
 
 })
 
@@ -26,20 +37,18 @@ const game = {
 	setTimer(){
 		//Timer starts at 30 seconds counting down, changing DOM as it goes. 
 		const $timer = $('#timer')
-
+		//when 0, clears timer, makes all buttons white
 		const interval = setInterval(() => {
 			if(this.time === 0){
 				clearInterval(interval)
 				$('button').css('background-color', 'white')
 
-
+				// if timer is not 0, make all buttons white. then set a random
 				} else {
 					this.time--
 					$timer.text(`Timer: ${this.time}`)
 					$('button').css('background-color', 'white')
 					game.setRandom()
-
-
 				}
 
 			}
@@ -69,7 +78,6 @@ const game = {
 
 		$('#score1').text(`Score: ${this.P1score}`)
 		}
-
 
 }
 
