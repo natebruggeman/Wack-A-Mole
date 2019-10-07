@@ -10,19 +10,16 @@ $('#start').on('click', () =>{
 $('button').on('click', (e) => {
   console.log(e.target)
 
-
   const color = $(e.target).css('backgroundColor')
-  
-
   game.scoreRandom(color)
-
+  const blank = $(e.target).css('background-color', 'white')
 
 })
 
 
 const game = {
 	time: 30,
-	P1score: 0,
+	P1score: 1,
 	P2score: 0,
 
 	setTimer(){
@@ -37,6 +34,7 @@ const game = {
 				} else {
 					this.time--
 					$timer.text(`Timer: ${this.time}`)
+
 				}
 
 			}
@@ -52,18 +50,16 @@ const game = {
 		const $buttonSelect = $('button').eq(randomNumber)
 		$buttonSelect.css('background-color', 'red')
 
-
 	},
 
 	scoreRandom(color){
-		
+		//if background is red and clicked we'll score +1 if it's clicked and not red we'll subtract one
 
 		if(color === 'rgb(255, 0, 0)'){
 			this.P1score += 1;
-			
+		
 			} else {
 			this.P1score -= 1;
-			
 			}
 
 		$('#score1').text(`Score: ${this.P1score}`)
