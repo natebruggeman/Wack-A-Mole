@@ -7,6 +7,17 @@ $('#start').on('click', () =>{
 
 });
 
+$('button').on('click', (e) => {
+  console.log(e.target)
+
+
+  const color = $(e.target).css('backgroundColor')
+  
+
+  game.scoreRandom(color)
+
+
+})
 
 
 const game = {
@@ -34,6 +45,7 @@ const game = {
 
 	setRandom(){
 
+		//generates a random number 1-25 and turns that corresponding button red
 		const randomNumber = Math.floor(Math.random() * 25 + 1)
 		console.log(randomNumber);
 
@@ -41,7 +53,21 @@ const game = {
 		$buttonSelect.css('background-color', 'red')
 
 
-	}
+	},
+
+	scoreRandom(color){
+		
+
+		if(color === 'rgb(255, 0, 0)'){
+			this.P1score += 1;
+			
+			} else {
+			this.P1score -= 1;
+			
+			}
+
+		$('#score1').text(`Score: ${this.P1score}`)
+		}
 
 
 }
