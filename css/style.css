@@ -1,0 +1,19 @@
+body{
+	background-color: navy;
+	display: flex;
+
+}
+header{
+	font-size: 30px;
+}
+button{
+	padding: 16px;
+	margin: 5px;
+	border-radius: 11px; 
+}	
+
+div > div{
+	display: flex;
+	justify-content: space-around;
+
+}
