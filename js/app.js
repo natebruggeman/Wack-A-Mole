@@ -33,6 +33,8 @@ $('#start').on('click', () =>{
 
 });
 
+
+
 $('.numb').on('click', (e) => {
   console.log(e.target)
 
@@ -44,7 +46,7 @@ $('.numb').on('click', (e) => {
 
 
 const game = {
-	time: 30,
+	time: 5,
 	P1score: 0,
 	P2score: 0,
 	round: 1, 
@@ -56,14 +58,35 @@ const game = {
 		const $timer = $('#timer')
 		//when 0, clears timer, makes all buttons white
 		const interval = setInterval(() => {
-			if(this.time === 0){
-				
+
+			if(this.time === 0 && this.turn === 2 && this.P1score === this.P2score){
+				console.log('tie');
+				$('#turn').text("Tie Game!");
 				$('.numb').css('background-color', 'white');
-				
-				// console.log(this.turn);
-				// $('#turn').text(enterName2 + `'s turn!`);
+				clearInterval(interval);
+
+
+				} else if (this.turn ===  2 && this.time === 0 && this.P1score > this.P2score){
+				console.log("P1 Wins!");
+				$('#turn').text(enterName1 + " wins!");
+				$('.numb').css('background-color', 'white');
+				clearInterval(interval);
+
+
+				} else if (this.turn ===  2 && this.time === 0 && this.P1score < this.P2score){
+				console.log('P2 Wins!');
+				$('#turn').text(enterName2 + " wins!");
+				$('.numb').css('background-color', 'white');
+				clearInterval(interval);
+
+			
+				}else if(this.time === 0){
+				$('.numb').css('background-color', 'white');
+				console.log(this.turn);
+				$('#turn').text(enterName2 + `'s turn!`);
 				clearInterval(interval);
 				this.turn++;
+
 
 				// if timer is not 0, make all buttons white. then set a random
 				} else {
@@ -105,6 +128,7 @@ const game = {
 		    } else {
 		    this.P1score -= 1;	
 		    }
+
 		$('#score1').text(`Score: ${this.P1score}`)
 		$('#score2').text(`Score: ${this.P2score}`)
 	},
@@ -116,22 +140,19 @@ const game = {
 			this.setRandom()
 			console.log("yeah buddy1 ");
 			} else if (this.turn === 2){
-			this.time = 30	
+			this.time = 5	
 			this.setTimer()	
 			console.log("yeah buddy2 ");
-			
 			} else {
-			this.setTimer()	
-			console.log("what");
-			}
+			
 
-		}
-
-	
+	}
+},
 
 }
 
 
+	
 
 
 
@@ -152,6 +173,22 @@ const game = {
 
 
 
+
+
+
+
+
+
+	// setWinner(){
+	// 	if(this.turn === 2 && this.time === 0 && this.P1score === this.P2score){
+	// 		console.log("tie!");
+	// 	} else if (this.turn ===  2 && this.time === 0 && this.P1score > this.P2score){
+	// 		console.log("P1 Wins!");
+	// 	} else {
+	// 		console.log("P2 Wins!");
+	// 	}
+
+	// }
 
 	// scoreRandom(color){
 	// 	//if background is red and clicked we'll score +1 if it's clicked and not red we'll subtract one
