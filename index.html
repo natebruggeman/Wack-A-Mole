@@ -8,56 +8,79 @@
 	
 </head>
 <body>
-	<header>
-		<div id = "round"> Round 1 </div>
-		<div id = "turn">Player 1's Turn </div>
-		<div id = "player1">Player 1 </div>
-		<div id = "score1"> Score: 0</div>
-		<div id = "timer"> Timer: 30 </div>
-		<div id = "player2">Player 2 </div>
-		<div id = "score2"> Score :0</div>
-		<button id = "start"> Start </button>
-	</header>
+			<div id = "smack"> SMACK-A-JACK </div>
+			<button class="open">Let's Smack!</button>
+			<div id = "turn">Player 1's Turn </div>
 
-	<div>
+	<header>
+			
+			<div id = "player1">Player 1 </div>
+			<div id = "timer"> Timer: 30 </div>
+			<div id = "player2">Player 2 </div>
+	</header>
+			<div class ="popup-overlay">
+				<div class="popup-content">
+					<h3> Welcome to Smack-A-Jack </h3>
+					<p>
+					Nobody likes Jack! </br> </br>
+					To play, smack Jack as he pops up in the buttons! </br> </br>
+					Be careful not to smack any innocent bystanders, that won't help you.
+
+
+					</p>
+					<input type="text" placeholder="Player 1" id="input-box1" />
+					<input type="text" placeholder="Player 2" id="input-box2" />
+					<input type="submit" id="submit-btn" />
+				</div>	
+			</div>
+
+
+	<div class = "container1">
+			<div id = "score1"> Score: 0</div>
+			<button id = "start"> Start </button>
+			<div id = "score2"> Score :0</div>
+
+	</div>
+
+	<div class = "container2">
 			<div id="row1">
-				<button class= "numb" id= "0">1</button>
-				<button class= "numb" id= "1">2</button>
-				<button class= "numb" id= "2">3</button>
-				<button class= "numb" id= "3">4</button>
-				<button class= "numb" id= "4">5</button>
+				<button class= "numb" id= "0"> </button>
+				<button class= "numb" id= "1"> </button>
+				<button class= "numb" id= "2"> </button>
+				<button class= "numb" id= "3"> </button>
+				<button class= "numb" id= "4"> </button>
 			</div>
 		
 			<div id="row2">
-				<button class= "numb" id= "5">6</button>
-				<button class= "numb" id= "6">7</button>
-				<button class= "numb" id= "7">8</button>
-				<button class= "numb" id= "8">9</button>
-				<button class= "numb" id= "9">10</button>
+				<button class= "numb" id= "5"> </button>
+				<button class= "numb" id= "6"> </button>
+				<button class= "numb" id= "7"> </button>
+				<button class= "numb" id= "8"> </button>
+				<button class= "numb" id= "9"> </button>
 			</div>
 
 			<div id="row3">
-				<button class= "numb" id= "10">11</button>
-				<button class= "numb" id= "11">12</button>
-				<button class= "numb" id= "12">13</button>
-				<button class= "numb" id= "13">14</button>
-				<button class= "numb" id= "14">15</button>
+				<button class= "numb" id= "10"> </button>
+				<button class= "numb" id= "11"> </button>
+				<button class= "numb" id= "12"> </button>
+				<button class= "numb" id= "13"> </button>
+				<button class= "numb" id= "14"> </button>
 			</div>
 
 			<div id="row4">
-				<button class= "numb" id= "15">16</button>
-				<button class= "numb" id= "16">17</button>
-				<button class= "numb" id= "17">18</button>
-				<button class= "numb" id= "18">19</button>
-				<button class= "numb" id= "19">20</button>
+				<button class= "numb" id= "15"> </button>
+				<button class= "numb" id= "16"> </button>
+				<button class= "numb" id= "17"> </button>
+				<button class= "numb" id= "18"> </button>
+				<button class= "numb" id= "19"> </button>
 			</div>
 			
 			<div id="row5">
-				<button class= "numb" id= "20">21</button>
-				<button class= "numb" id= "21">22</button>
-				<button class= "numb" id= "22">23</button>
-				<button class= "numb" id= "23">24</button>
-				<button class= "numb" id= "24">25</button>
+				<button class= "numb" id= "20"> </button>
+				<button class= "numb" id= "21"> </button>
+				<button class= "numb" id= "22"> </button>
+				<button class= "numb" id= "23"> </button>
+				<button class= "numb" id= "24"> </button>
 			</div>
 		
 	</div>

@@ -2,22 +2,39 @@
 
 
 
-const enterName1 = prompt("Enter your name Player 1!", "Name")
-const $name1 = $("#player1")
-const $turn = $("#turn")
-if (enterName1 != null){
+// const enterName1 = prompt("Enter your name Player 1!", "Name")
+// const $name1 = $("#player1")
+// const $turn = $("#turn")
+// if (enterName1 != null){
+// 	$name1.text(enterName1)
+// 	$turn.text(enterName1 + `'s turn`)
+// }
+
+// const enterName2 = prompt("Enter your name Player 2!", "Name")
+// const $name2 = $("#player2")
+// if (enterName2 != null){
+// 	$name2.text(enterName2)
+// }
+
+// $(".open").on("click", function(){
+// $(".popup-overlay").attr("visibility", 'visible');
+// $(".popup-content").attr("visibility", 'visible');
+// });
+$(".open").on("click",() =>{
+	$(".popup, .popup-content").addClass("active");
+	$(".open").addClass("active");
+});
+
+$("#submit-btn, .popup").on("click",()=>{
+	const $name1 = $("#player1")
+	const $name2 = $("#player2")
+	const enterName1 = $("#input-box1").val()
+	const enterName2 = $("#input-box2").val()
 	$name1.text(enterName1)
-	$turn.text(enterName1 + `'s turn`)
-}
-
-const enterName2 = prompt("Enter your name Player 2!", "Name")
-const $name2 = $("#player2")
-if (enterName2 != null){
 	$name2.text(enterName2)
-}
 
-
-
+	$(".popup, .popup-content").removeClass("active");
+});
 
 
 
@@ -46,7 +63,7 @@ $('.numb').on('click', (e) => {
 
 
 const game = {
-	time: 5,
+	time: 30,
 	P1score: 0,
 	P2score: 0,
 	round: 1, 
@@ -108,6 +125,7 @@ const game = {
 
 		const $buttonSelect = $('.numb').eq(randomNumber)
 		$buttonSelect.css('background-color', 'red')
+		// $buttonSelect.css('background', 'url(https://venue-forum-prod.s3-us-west-2.amazonaws.com/_imported_profiles/_46596_michael-jackson-is-madman2-150x150.jpg)')
 
 	},
 
@@ -140,14 +158,25 @@ const game = {
 			this.setRandom()
 			console.log("yeah buddy1 ");
 			} else if (this.turn === 2){
-			this.time = 5	
+			this.time = 30	
 			this.setTimer()	
 			console.log("yeah buddy2 ");
 			} else {
-			
+			}
+	},
 
-	}
-},
+	// setJack(){
+	// 	const jackArray = [,]
+
+	// 	const randNum = Math.floor(Math.random() * 4)
+
+
+
+	// }
+
+
+
+
 
 }
 
