@@ -47,7 +47,7 @@ $('.numb').on('click', (e) => {
 $('#turn').text(enterName1.text() + `'s turn!`);
 
 const game = {
-	time: 5,
+	time: 30,
 	P1score: 0,
 	P2score: 0,
 	round: 1, 
@@ -66,7 +66,8 @@ const game = {
 				console.log('tie');
 				$('#turn').text("Tie Game!");
 				$('.numb').css('background-color', 'white');
-				// $buttonSelect.remove($('img'))
+				
+				$('#jack').removeClass("active");
 				clearInterval(interval);
 
 
@@ -74,7 +75,8 @@ const game = {
 				console.log("P1 Wins!");
 				$('#turn').text(enterName1.text() + " wins!");
 				$('.numb').css('background-color', 'white');
-				// $buttonSelect.remove($('img'))
+				
+				$('#jack').removeClass("active");
 				clearInterval(interval);
 
 
@@ -82,7 +84,8 @@ const game = {
 				console.log('P2 Wins!');
 				$('#turn').text(enterName2.text() + " wins!");
 				$('.numb').css('background-color', 'white');
-				// $buttonSelect.remove($('img'))
+				
+				$('#jack').removeClass("active");
 				clearInterval(interval);
 
 			
@@ -92,7 +95,8 @@ const game = {
 				console.log(this.turn);
 				$('#turn').text(enterName2.text() + `'s turn!`);
 				clearInterval(interval);
-				// $buttonSelect.remove($('img'))
+				
+				$('#jack').removeClass("active");
 				this.turn++;
 
 
@@ -128,7 +132,7 @@ const game = {
 		$('#jack').addClass("active");
 
 
-		$buttonSelect.css('background-image', 'url($(#jack))')
+		// $buttonSelect.css('background-image', 'url($(#jack))')
 		$buttonSelect.append($('#jack'))
 
 	},
@@ -162,7 +166,7 @@ const game = {
 			this.setRandom()
 			console.log("yeah buddy1 ");
 		} else if (this.turn === 2){
-			this.time = 5	
+			this.time = 30	
 			this.setTimer()	
 			console.log("yeah buddy2 ");
 		} else {

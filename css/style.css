@@ -52,6 +52,9 @@ header{
 	margin: 3px;
 }
 
+#smackButton{
+	text-align: center;
+}
 .open.active{
 	display: none;
 
@@ -60,11 +63,15 @@ header{
 .open{
 	visibility: visible;
 
+	/*flex-grow: 1;*/
+	display: inline-flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
 
-	padding: 30px;
-	margin: 5px;
+	padding: 50px;
+	margin: 40px;
 	border-radius: 18px; 
-	font-style: 20px;
+	font-size: 30px;
 	border: 7px outset rgba(28,110,164,0.6);
 }
 .info{
@@ -153,6 +160,7 @@ input{
 	font-style: 20px;
 	border: 7px outset rgba(28,110,164,0.6);
 }
+
 
 #jack{
 	visibility:hidden;
