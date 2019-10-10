@@ -21,13 +21,9 @@ $("#submit-btn, .popup").on("click",()=>{
 	$('#turn').text(enterName1 + `'s turn!`);
 });
 
-
-// const enterName1 = $("#input-box1").val()
-// const enterName2 = $("#input-box2").val()
 const enterName1 = $("#player1")
 const enterName2 = $("#player2")
-console.log(enterName1);
-console.log(enterName2);
+
 
 
 //start button starts turn 1 and turn 2 once timer has hit zero
@@ -37,18 +33,17 @@ $('#start').on('click', () =>{
 });
 
 
-//listening for background color, and scoring if background is red 
+//listening for id, and scoring if jack is the id
 $('.numb').on('click', (e) => {
   console.log(e.target)
-
-  const color = $(e.target).css('backgroundColor')
-  game.scoreRandom(color)
-  // const blank = $(e.target).css('background-color', 'white')
+  const jack = $(e.target).attr('id')
+  game.scoreRandom(jack)
+ 
 
 })
 
 
-
+//Starts the game on P1's turn
 $('#turn').text(enterName1.text() + `'s turn!`);
 
 const game = {
@@ -89,6 +84,7 @@ const game = {
 			
 			}else if(this.time === 0){
 				$('.numb').css('background-color', 'white');
+
 				console.log(this.turn);
 				$('#turn').text(enterName2.text() + `'s turn!`);
 				clearInterval(interval);
@@ -105,30 +101,43 @@ const game = {
 
 		}, 1000)
 	},
-
 	setRandom(){
+		//generates random jack to be appended later
+		const jackArray = new Array('https://i.imgur.com/Vg7N2n4.jpg', 'https://i.imgur.com/y291K1P.jpg', 'https://i.imgur.com/mGg7BXy.jpg', 'https://i.imgur.com/7Ywa0jE.jpg');
+		const randomJack = jackArray[Math.floor(Math.random() * 4)]
+		console.log(randomJack);
+
 
 		//generates a random number 1-25 and turns that corresponding button red
 		const randomNumber = Math.floor(Math.random() * 25)
 		console.log(randomNumber);
 
+
+		// buttonselect chooses random buttom
 		const $buttonSelect = $('.numb').eq(randomNumber)
-		$buttonSelect.css('background-color', 'red')
-		// $buttonSelect.css('background', 'url(https://venue-forum-prod.s3-us-west-2.amazonaws.com/_imported_profiles/_46596_michael-jackson-is-madman2-150x150.jpg)')
+
+		//appends random jack to random button
+		$('#jack').attr('src', randomJack);
+		$('#jack').addClass("active");
+		$buttonSelect.append($('#jack'))
+		
+
+
+		// $buttonSelect.css('background-color', 'red')
 
 	},
 
 
 	//if turn is even (p2) and button is red give points to p2, if turn is not even give to p1
-	scoreRandom(color){
-		if (this.turn % 2 === 0 && color === 'rgb(255, 0, 0)'){
+	scoreRandom(jack){
+		if (this.turn % 2 === 0 && jack === 'jack'){
 			this.P2score += 1;
 			console.log("p2 score");
 
-		} else if (this.turn % 2 === 0 && color !== 'rgb(255, 0, 0)'){
+		} else if (this.turn % 2 === 0 && jack !== 'jack'){
 			this.P2score -= 1;	
 
-		} else if (color === 'rgb(255, 0, 0)'){
+		} else if (jack === 'jack'){
 			this.P1score += 1;
 			console.log("P1 score");
 
@@ -154,19 +163,8 @@ const game = {
 		}
 	},
 
-	// setJack(){
-	// 	const jackArray = [,]
-
-	// 	const randNum = Math.floor(Math.random() * 4)
-
-
-	// }
-
 
 }
 
-
 	
-
-
 

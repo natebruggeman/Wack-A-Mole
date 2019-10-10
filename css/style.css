@@ -148,9 +148,13 @@ input{
 	border: 7px outset rgba(28,110,164,0.6);
 }
 
+#jack{
+	visibility:hidden;
+}
 
-
-
+#jack.active{
+	visibility:visible;
+}
 
 
 
