@@ -58,6 +58,7 @@ const game = {
 
 		//Timer starts at 30 seconds counting down, changing DOM as it goes. 
 		const $timer = $('#timer')
+		// const $buttonSelect = $('.numb')
 		//when 0, clears timer, makes all buttons white
 		const interval = setInterval(() => {
 
@@ -65,6 +66,7 @@ const game = {
 				console.log('tie');
 				$('#turn').text("Tie Game!");
 				$('.numb').css('background-color', 'white');
+				// $buttonSelect.remove($('img'))
 				clearInterval(interval);
 
 
@@ -72,6 +74,7 @@ const game = {
 				console.log("P1 Wins!");
 				$('#turn').text(enterName1.text() + " wins!");
 				$('.numb').css('background-color', 'white');
+				// $buttonSelect.remove($('img'))
 				clearInterval(interval);
 
 
@@ -79,6 +82,7 @@ const game = {
 				console.log('P2 Wins!');
 				$('#turn').text(enterName2.text() + " wins!");
 				$('.numb').css('background-color', 'white');
+				// $buttonSelect.remove($('img'))
 				clearInterval(interval);
 
 			
@@ -88,6 +92,7 @@ const game = {
 				console.log(this.turn);
 				$('#turn').text(enterName2.text() + `'s turn!`);
 				clearInterval(interval);
+				// $buttonSelect.remove($('img'))
 				this.turn++;
 
 
@@ -101,6 +106,7 @@ const game = {
 
 		}, 1000)
 	},
+
 	setRandom(){
 		//generates random jack to be appended later
 		const jackArray = new Array('https://i.imgur.com/Vg7N2n4.jpg', 'https://i.imgur.com/y291K1P.jpg', 'https://i.imgur.com/mGg7BXy.jpg', 'https://i.imgur.com/7Ywa0jE.jpg');
@@ -118,12 +124,12 @@ const game = {
 
 		//appends random jack to random button
 		$('#jack').attr('src', randomJack);
+
 		$('#jack').addClass("active");
+
+
+		$buttonSelect.css('background-image', 'url($(#jack))')
 		$buttonSelect.append($('#jack'))
-		
-
-
-		// $buttonSelect.css('background-color', 'red')
 
 	},
 
