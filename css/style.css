@@ -2,18 +2,27 @@ body{
 	background: url(https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg);
 	/*filter: grayscale(80%);*/
 }
+/*header contains turn and player details*/
 header.active{
 	visibility: visible;
-	color: rgba(229,224,81,0.69);
+	color: rgba(229,224,81,0.9);
 	font-size: 30px;
 	display: flex;	
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-evenly;
 	border: 10px outset #FF0101;
-	background-color: #595968;
+	background-color: rgba(89,89,104,0.70);
+
 }
 header{
 	visibility:hidden;
+}
+/*header starts invisible then gets active added to make it and the containers visible*/
+.playerDetails{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	flex-grow: 1;
 }
 
 .popup-overlay {
@@ -26,7 +35,7 @@ header{
 
 .popup-overlay.active{
 	visibility:visible;
-	color: rgba(229,224,81,0.69);
+	color: rgba(229,224,81,0.9);
 	font-size: 30px;
 	display: flex;	
 	flex-direction: row;
@@ -35,19 +44,19 @@ header{
 
 .popup-content.active {
 	visibility:visible;
-	color: rgba(229,224,81,0.69);
+	color: rgba(229,224,81,0.9);
 	font-size: 30px;
 	text-align: center;
+	border: 10px outset #FF0101;
+	background-color: rgba(89,89,104,0.70);
+	margin: 3px;
 }
 
 .open.active{
 	display: none;
 
 }
-
-.hidden {
-	display: none;
-}
+/*open is the Let's Smack button that kicks the whole game off. Disappears once clicked*/
 .open{
 	visibility: visible;
 
@@ -61,7 +70,7 @@ header{
 .info{
 	align-items: center;
 }
-
+/* Submit button on name entry disappears with input as submit is clicked*/
 submit-btn{
 	border: 7px outset rgba(28,110,164,0.6);
 	padding: 30px;
@@ -73,6 +82,7 @@ input{
 	padding: 30px;
 	margin: 5px;
 }
+/*smack is smack a jack at the top */
 #smack{
 	color: rgba(229,200,81,1);
 	font-size: 40px;
@@ -81,27 +91,29 @@ input{
 	justify-content: center;
 	/*background: url(https://p7.hiclipart.com/preview/785/495/724/t-shirt-discounts-and-allowances-amazon-com-clothing-pow.jpg);*/
 }
-
+/*turn is the players turn, this should change with turn*/
 #turn{
-	color: rgba(229,224,81,0.69);
+	color: rgba(229,224,81,0.9);
 	font-size: 40px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	border: 10px outset #FF0101;
-	background-color: #595968;
+	/*border: 10px outset #FF0101;*/
+	/*background-color: rgba(89,89,104,0.70);*/
 
 }
+/* Container 1 is score and start button, should be below header*/
 .container1.active {
 	visibility: visible;
-	color: rgba(229,224,81,0.69);
+	color: rgba(229,224,81,0.9);
 	font-size: 30px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	justify-content: space-evenly;
+	align-items: center;
 	border: 10px outset #FF0101;
-	background-color: #595968;
+	background-color: rgba(89,89,104,0.70);
 }
 .container1{
 	visibility:hidden;

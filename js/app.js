@@ -1,13 +1,13 @@
 //adds players names to the DOM
 
-
+// open click starts everything 
 $(".open").on("click",() =>{
 	$(".popup, .popup-content").addClass("active");
-
-
 	$(".open").addClass("active");
 });
 
+
+//submit button hides instructions and displays game, score, turn, etc. 
 $("#submit-btn, .popup").on("click",()=>{
 	const $name1 = $("#player1")
 	const $name2 = $("#player2")
@@ -16,24 +16,28 @@ $("#submit-btn, .popup").on("click",()=>{
 	$name1.text(enterName1)
 	$name2.text(enterName2)
 
-	// $(".popup, .popup-content").removeClass("active");
 	$(".popup, .popup-content").hide()
 	$("header, .container1, .container2").addClass("active");
-
+	$('#turn').text(enterName1 + `'s turn!`);
 });
 
 
+// const enterName1 = $("#input-box1").val()
+// const enterName2 = $("#input-box2").val()
+const enterName1 = $("#player1")
+const enterName2 = $("#player2")
+console.log(enterName1);
+console.log(enterName2);
 
 
+//start button starts turn 1 and turn 2 once timer has hit zero
 $('#start').on('click', () =>{
-	console.log('button works');
-	// game.setTimer();
 	game.setRound();
 
 });
 
 
-
+//listening for background color, and scoring if background is red 
 $('.numb').on('click', (e) => {
   console.log(e.target)
 
@@ -45,6 +49,7 @@ $('.numb').on('click', (e) => {
 
 
 
+$('#turn').text(enterName1.text() + `'s turn!`);
 
 const game = {
 	time: 5,
@@ -55,6 +60,7 @@ const game = {
 
 
 	setTimer(){
+
 		//Timer starts at 30 seconds counting down, changing DOM as it goes. 
 		const $timer = $('#timer')
 		//when 0, clears timer, makes all buttons white
@@ -67,38 +73,37 @@ const game = {
 				clearInterval(interval);
 
 
-				} else if (this.turn ===  2 && this.time === 0 && this.P1score > this.P2score){
+			} else if (this.turn ===  2 && this.time === 0 && this.P1score > this.P2score){
 				console.log("P1 Wins!");
-				$('#turn').text(enterName1 + " wins!");
+				$('#turn').text(enterName1.text() + " wins!");
 				$('.numb').css('background-color', 'white');
 				clearInterval(interval);
 
 
-				} else if (this.turn ===  2 && this.time === 0 && this.P1score < this.P2score){
+			} else if (this.turn ===  2 && this.time === 0 && this.P1score < this.P2score){
 				console.log('P2 Wins!');
-				$('#turn').text(enterName2 + " wins!");
+				$('#turn').text(enterName2.text() + " wins!");
 				$('.numb').css('background-color', 'white');
 				clearInterval(interval);
 
 			
-				}else if(this.time === 0){
+			}else if(this.time === 0){
 				$('.numb').css('background-color', 'white');
 				console.log(this.turn);
-				// $('#turn').text(enterName2 + `'s turn!`);
+				$('#turn').text(enterName2.text() + `'s turn!`);
 				clearInterval(interval);
 				this.turn++;
 
 
 				// if timer is not 0, make all buttons white. then set a random
-				} else {
-					this.time--
-					$timer.text(`Timer: ${this.time}`)
-					$('.numb').css('background-color', 'white')
-					game.setRandom()
-				}
-
+			} else {
+				this.time--
+				$timer.text(`Timer: ${this.time}`)
+				$('.numb').css('background-color', 'white')
+				game.setRandom()
 			}
-		,1000)
+
+		}, 1000)
 	},
 
 	setRandom(){
@@ -114,22 +119,22 @@ const game = {
 	},
 
 
-	//if turn is even (p2) and button is red give points to p2, if turn in not even give to p1
+	//if turn is even (p2) and button is red give points to p2, if turn is not even give to p1
 	scoreRandom(color){
 		if (this.turn % 2 === 0 && color === 'rgb(255, 0, 0)'){
 			this.P2score += 1;
 			console.log("p2 score");
 
-			} else if (this.turn % 2 === 0 && color !== 'rgb(255, 0, 0)'){
+		} else if (this.turn % 2 === 0 && color !== 'rgb(255, 0, 0)'){
 			this.P2score -= 1;	
 
-			} else if (color === 'rgb(255, 0, 0)'){
+		} else if (color === 'rgb(255, 0, 0)'){
 			this.P1score += 1;
 			console.log("P1 score");
 
-		    } else {
+	    } else {
 		    this.P1score -= 1;	
-		    }
+	    }
 
 		$('#score1').text(`Score: ${this.P1score}`)
 		$('#score2').text(`Score: ${this.P2score}`)
@@ -141,12 +146,12 @@ const game = {
 			this.setTimer()
 			this.setRandom()
 			console.log("yeah buddy1 ");
-			} else if (this.turn === 2){
+		} else if (this.turn === 2){
 			this.time = 5	
 			this.setTimer()	
 			console.log("yeah buddy2 ");
-			} else {
-			}
+		} else {
+		}
 	},
 
 	// setJack(){
@@ -155,11 +160,7 @@ const game = {
 	// 	const randNum = Math.floor(Math.random() * 4)
 
 
-
 	// }
-
-
-
 
 
 }
@@ -169,48 +170,3 @@ const game = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// setWinner(){
-	// 	if(this.turn === 2 && this.time === 0 && this.P1score === this.P2score){
-	// 		console.log("tie!");
-	// 	} else if (this.turn ===  2 && this.time === 0 && this.P1score > this.P2score){
-	// 		console.log("P1 Wins!");
-	// 	} else {
-	// 		console.log("P2 Wins!");
-	// 	}
-
-	// }
-
-	// scoreRandom(color){
-	// 	//if background is red and clicked we'll score +1 if it's clicked and not red we'll subtract one
-
-	// 	if(color === 'rgb(255, 0, 0)'){
-	// 		this.P1score += 1;
-		
-	// 		} else {
-	// 		this.P1score -= 1;
-	// 		}
-	// 	$('#score1').text(`Score: ${this.P1score}`)
-	// }
