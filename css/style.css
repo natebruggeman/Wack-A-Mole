@@ -2,7 +2,8 @@ body{
 	background: url(https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg);
 	/*filter: grayscale(80%);*/
 }
-header{
+header.active{
+	visibility: visible;
 	color: rgba(229,224,81,0.69);
 	font-size: 30px;
 	display: flex;	
@@ -10,6 +11,9 @@ header{
 	justify-content: space-evenly;
 	border: 10px outset #FF0101;
 	background-color: #595968;
+}
+header{
+	visibility:hidden;
 }
 
 .popup-overlay {
@@ -37,15 +41,30 @@ header{
 }
 
 .open.active{
-	visibility:hidden;
+	display: none;
 
+}
+
+.hidden {
+	display: none;
 }
 .open{
 	visibility: visible;
+
+
+	padding: 30px;
+	margin: 5px;
+	border-radius: 18px; 
+	font-style: 20px;
+	border: 7px outset rgba(28,110,164,0.6);
+}
+.info{
+	align-items: center;
 }
 
 submit-btn{
 	border: 7px outset rgba(28,110,164,0.6);
+	padding: 30px;
 }
 input{
 	padding: 16px;
@@ -73,7 +92,8 @@ input{
 	background-color: #595968;
 
 }
-.container1 {
+.container1.active {
+	visibility: visible;
 	color: rgba(229,224,81,0.69);
 	font-size: 30px;
 	display: flex;
@@ -82,11 +102,17 @@ input{
 	justify-content: space-evenly;
 	border: 10px outset #FF0101;
 	background-color: #595968;
-
+}
+.container1{
+	visibility:hidden;
+}
+.container2.active {
+	text-align: center;
+	visibility: visible;
 
 }
-.container2 {
-	text-align: center;
+.container2{
+	visibility:hidden;
 }
 #timer{
 	border: 10px outset #FF0101;
@@ -94,10 +120,27 @@ input{
 	padding: 5px;
 }
 
-button{
+.numb{
 	padding: 50px;
 	margin: 5px;
 	border-radius: 18px; 
 	font-style: 20px;
 	border: 7px outset rgba(28,110,164,0.6);
 }	
+
+#start{
+	padding: 50px;
+	margin: 5px;
+	border-radius: 18px; 
+	font-style: 20px;
+	border: 7px outset rgba(28,110,164,0.6);
+}
+
+
+
+
+
+
+
+
+

@@ -1,27 +1,10 @@
 //adds players names to the DOM
 
 
-
-// const enterName1 = prompt("Enter your name Player 1!", "Name")
-// const $name1 = $("#player1")
-// const $turn = $("#turn")
-// if (enterName1 != null){
-// 	$name1.text(enterName1)
-// 	$turn.text(enterName1 + `'s turn`)
-// }
-
-// const enterName2 = prompt("Enter your name Player 2!", "Name")
-// const $name2 = $("#player2")
-// if (enterName2 != null){
-// 	$name2.text(enterName2)
-// }
-
-// $(".open").on("click", function(){
-// $(".popup-overlay").attr("visibility", 'visible');
-// $(".popup-content").attr("visibility", 'visible');
-// });
 $(".open").on("click",() =>{
 	$(".popup, .popup-content").addClass("active");
+
+
 	$(".open").addClass("active");
 });
 
@@ -33,12 +16,11 @@ $("#submit-btn, .popup").on("click",()=>{
 	$name1.text(enterName1)
 	$name2.text(enterName2)
 
-	$(".popup, .popup-content").removeClass("active");
+	// $(".popup, .popup-content").removeClass("active");
+	$(".popup, .popup-content").hide()
+	$("header, .container1, .container2").addClass("active");
+
 });
-
-
-
-
 
 
 
@@ -62,8 +44,10 @@ $('.numb').on('click', (e) => {
 })
 
 
+
+
 const game = {
-	time: 30,
+	time: 5,
 	P1score: 0,
 	P2score: 0,
 	round: 1, 
@@ -100,7 +84,7 @@ const game = {
 				}else if(this.time === 0){
 				$('.numb').css('background-color', 'white');
 				console.log(this.turn);
-				$('#turn').text(enterName2 + `'s turn!`);
+				// $('#turn').text(enterName2 + `'s turn!`);
 				clearInterval(interval);
 				this.turn++;
 
@@ -158,7 +142,7 @@ const game = {
 			this.setRandom()
 			console.log("yeah buddy1 ");
 			} else if (this.turn === 2){
-			this.time = 30	
+			this.time = 5	
 			this.setTimer()	
 			console.log("yeah buddy2 ");
 			} else {
