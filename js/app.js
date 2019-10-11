@@ -175,13 +175,13 @@ const game = {
 			this.setRandom()
 			
 		} else if (this.turn === 2){
-			this.time = 5
+			this.time = 20
 			this.setTimer()	
 			
 
 			
 		} else if (this.turn === 3){
-			this.time = 5
+			this.time = 20
 			// this.setBuddy();
 			this.setTimer()
 			this.setRandom()
@@ -189,7 +189,7 @@ const game = {
 
 			
 		} else if (this.turn === 4){
-			this.time = 5
+			this.time = 20
 			// this.setBuddy();
 			this.setTimer()
 			this.setRandom()
@@ -204,7 +204,7 @@ const game = {
 		setBuddy(){
 			if(this.turn > 2){
 		//generates random buddy to be appended later
-		const buddyArray = new Array('https://i.imgur.com/8o1JyET.png', 'https://i.imgur.com/qC5uoht.jpg', 'https://i.imgur.com/9RnwHxw.jpg', 'https://i.imgur.com/LzSwlI1.png', 'https://i.imgur.com/smyu7IF.jpg');
+		const buddyArray = new Array('https://i.imgur.com/DPna0b6.png?1', 'https://i.imgur.com/mVV89Xp.png?1', 'https://i.imgur.com/oZr5PD8.png?1', 'https://i.imgur.com/lvMsUgw.png?1', 'https://i.imgur.com/B4OUK0i.png?1');
 
 		const randomBuddy = buddyArray[Math.floor(Math.random() * 5)]
 		console.log(randomBuddy);
