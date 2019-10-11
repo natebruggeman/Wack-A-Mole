@@ -35,7 +35,6 @@ $('#start').on('click', () =>{
 
 //listening for id, and scoring if jack is the id
 $('.numb').on('click', (e) => {
-  // console.log(e.target)
   const jack = $(e.target).attr('id')
   game.scoreRandom(jack)
  
@@ -63,7 +62,6 @@ const game = {
 		const interval = setInterval(() => {
 
 			if(this.time === 0 && this.turn === 4 && this.P1score === this.P2score){
-				// console.log('tie');
 				$('#turn').text("Tie Game!");
 				$('.numb').css('background-color', 'white');
 				$('#buddy').removeClass("active");
@@ -72,7 +70,6 @@ const game = {
 
 
 			} else if (this.turn ===  4 && this.time === 0 && this.P1score > this.P2score){
-				// console.log("P1 Wins!");
 				$('#turn').text(enterName1.text() + " wins!");
 				$('.numb').css('background-color', 'white');
 				$('#buddy').removeClass("active");
@@ -81,7 +78,6 @@ const game = {
 
 
 			} else if (this.turn ===  4 && this.time === 0 && this.P1score < this.P2score){
-				// console.log('P2 Wins!');
 				$('#turn').text(enterName2.text() + " wins!");
 				$('.numb').css('background-color', 'white');
 				$('#buddy').removeClass("active");
@@ -126,12 +122,10 @@ const game = {
 		//generates random jack to be appended later
 		const jackArray = new Array('https://i.imgur.com/6Yj4Zjx.png?1', 'https://i.imgur.com/7oM5EWD.png?1', 'https://i.imgur.com/ysAOMOz.png?1', 'https://i.imgur.com/sXwsu8p.png?1', 'https://i.imgur.com/eW9eZNE.png?2');
 		const randomJack = jackArray[Math.floor(Math.random() * 5)]
-		// console.log(randomJack);
 
 
 		//generates a random number 1-25 and turns that corresponding button red
 		const randomNumber = Math.floor(Math.random() * 25)
-		// console.log(randomNumber);
 
 
 		// buttonselect chooses random buttom
@@ -151,14 +145,12 @@ const game = {
 	scoreRandom(jack){
 		if (this.turn % 2 === 0 && jack === 'jack'){
 			this.P2score += 1;
-			// console.log("p2 score");
 
 		} else if (this.turn % 2 === 0 && jack !== 'jack'){
 			this.P2score -= 1;	
 
 		} else if (jack === 'jack'){
 			this.P1score += 1;
-			// console.log("P1 score");
 
 	    } else {
 		    this.P1score -= 1;	
@@ -178,22 +170,17 @@ const game = {
 			this.time = 20
 			this.setTimer()	
 			
-
 			
 		} else if (this.turn === 3){
 			this.time = 20
-			// this.setBuddy();
 			this.setTimer()
 			this.setRandom()
 			
 
-			
 		} else if (this.turn === 4){
 			this.time = 20
-			// this.setBuddy();
 			this.setTimer()
 			this.setRandom()
-			
 			
 
 		} else { 
