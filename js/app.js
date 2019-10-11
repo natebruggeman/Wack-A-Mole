@@ -1,4 +1,4 @@
-//adds players names to the DOM
+
 
 // open click starts everything 
 $(".open").on("click",() =>{
@@ -35,7 +35,7 @@ $('#start').on('click', () =>{
 
 //listening for id, and scoring if jack is the id
 $('.numb').on('click', (e) => {
-  console.log(e.target)
+  // console.log(e.target)
   const jack = $(e.target).attr('id')
   game.scoreRandom(jack)
  
@@ -46,8 +46,9 @@ $('.numb').on('click', (e) => {
 //Starts the game on P1's turn
 $('#turn').text(enterName1.text() + `'s turn!`);
 
+
 const game = {
-	time: 30,
+	time: 20,
 	P1score: 0,
 	P2score: 0,
 	round: 1, 
@@ -58,69 +59,79 @@ const game = {
 
 		//Timer starts at 30 seconds counting down, changing DOM as it goes. 
 		const $timer = $('#timer')
-		// const $buttonSelect = $('.numb')
 		//when 0, clears timer, makes all buttons white
 		const interval = setInterval(() => {
 
-			if(this.time === 0 && this.turn === 2 && this.P1score === this.P2score){
-				console.log('tie');
+			if(this.time === 0 && this.turn === 4 && this.P1score === this.P2score){
+				// console.log('tie');
 				$('#turn').text("Tie Game!");
 				$('.numb').css('background-color', 'white');
-				
+				$('#buddy').removeClass("active");
 				$('#jack').removeClass("active");
 				clearInterval(interval);
 
 
-			} else if (this.turn ===  2 && this.time === 0 && this.P1score > this.P2score){
-				console.log("P1 Wins!");
+			} else if (this.turn ===  4 && this.time === 0 && this.P1score > this.P2score){
+				// console.log("P1 Wins!");
 				$('#turn').text(enterName1.text() + " wins!");
 				$('.numb').css('background-color', 'white');
-				
+				$('#buddy').removeClass("active");
 				$('#jack').removeClass("active");
 				clearInterval(interval);
 
 
-			} else if (this.turn ===  2 && this.time === 0 && this.P1score < this.P2score){
-				console.log('P2 Wins!');
+			} else if (this.turn ===  4 && this.time === 0 && this.P1score < this.P2score){
+				// console.log('P2 Wins!');
 				$('#turn').text(enterName2.text() + " wins!");
 				$('.numb').css('background-color', 'white');
-				
+				$('#buddy').removeClass("active");
 				$('#jack').removeClass("active");
 				clearInterval(interval);
 
-			
-			}else if(this.time === 0){
+			// once time is 0 if player 1 === player 1 change turn on dom to player2
+			}else if(this.time === 0 && $('#turn').text() === $("#player1").text() + `'s turn!`){
 				$('.numb').css('background-color', 'white');
-
-				console.log(this.turn);
-				$('#turn').text(enterName2.text() + `'s turn!`);
 				clearInterval(interval);
-				
+
+				$('#buddy').removeClass("active");
 				$('#jack').removeClass("active");
+				$('#turn').text(enterName2.text() + `'s turn!`);
+
 				this.turn++;
 
+			// once time is 0 if player 2 === player 2 change turn on dom to player1
+			}else if(this.time === 0 && $('#turn').text() === $("#player2").text() + `'s turn!`){
+				$('.numb').css('background-color', 'white');
+				clearInterval(interval);
 
-				// if timer is not 0, make all buttons white. then set a random
+				$('#buddy').removeClass("active");
+				$('#jack').removeClass("active");
+				$('#turn').text(enterName1.text() + `'s turn!`);
+
+				this.turn++;
+
+			// if timer is not 0, make all buttons white. then set a random
 			} else {
 				this.time--
 				$timer.text(`Timer: ${this.time}`)
 				$('.numb').css('background-color', 'white')
 				game.setRandom()
+				game.setBuddy()
 			}
 
-		}, 1000)
+		}, 1200)
 	},
 
 	setRandom(){
 		//generates random jack to be appended later
-		const jackArray = new Array('https://i.imgur.com/Vg7N2n4.jpg', 'https://i.imgur.com/y291K1P.jpg', 'https://i.imgur.com/mGg7BXy.jpg', 'https://i.imgur.com/7Ywa0jE.jpg');
-		const randomJack = jackArray[Math.floor(Math.random() * 4)]
-		console.log(randomJack);
+		const jackArray = new Array('https://i.imgur.com/6Yj4Zjx.png?1', 'https://i.imgur.com/7oM5EWD.png?1', 'https://i.imgur.com/ysAOMOz.png?1', 'https://i.imgur.com/sXwsu8p.png?1', 'https://i.imgur.com/eW9eZNE.png?2');
+		const randomJack = jackArray[Math.floor(Math.random() * 5)]
+		// console.log(randomJack);
 
 
 		//generates a random number 1-25 and turns that corresponding button red
 		const randomNumber = Math.floor(Math.random() * 25)
-		console.log(randomNumber);
+		// console.log(randomNumber);
 
 
 		// buttonselect chooses random buttom
@@ -131,8 +142,6 @@ const game = {
 
 		$('#jack').addClass("active");
 
-
-		// $buttonSelect.css('background-image', 'url($(#jack))')
 		$buttonSelect.append($('#jack'))
 
 	},
@@ -142,14 +151,14 @@ const game = {
 	scoreRandom(jack){
 		if (this.turn % 2 === 0 && jack === 'jack'){
 			this.P2score += 1;
-			console.log("p2 score");
+			// console.log("p2 score");
 
 		} else if (this.turn % 2 === 0 && jack !== 'jack'){
 			this.P2score -= 1;	
 
 		} else if (jack === 'jack'){
 			this.P1score += 1;
-			console.log("P1 score");
+			// console.log("P1 score");
 
 	    } else {
 		    this.P1score -= 1;	
@@ -164,17 +173,64 @@ const game = {
 		if(this.turn === 1){
 			this.setTimer()
 			this.setRandom()
-			console.log("yeah buddy1 ");
+			
 		} else if (this.turn === 2){
-			this.time = 30	
+			this.time = 5
 			this.setTimer()	
-			console.log("yeah buddy2 ");
-		} else {
+			
+
+			
+		} else if (this.turn === 3){
+			this.time = 5
+			// this.setBuddy();
+			this.setTimer()
+			this.setRandom()
+			
+
+			
+		} else if (this.turn === 4){
+			this.time = 5
+			// this.setBuddy();
+			this.setTimer()
+			this.setRandom()
+			
+			
+
+		} else { 
 		}
 	},
 
+		//only in game if past first round
+		setBuddy(){
+			if(this.turn > 2){
+		//generates random buddy to be appended later
+		const buddyArray = new Array('https://i.imgur.com/8o1JyET.png', 'https://i.imgur.com/qC5uoht.jpg', 'https://i.imgur.com/9RnwHxw.jpg', 'https://i.imgur.com/LzSwlI1.png', 'https://i.imgur.com/smyu7IF.jpg');
+
+		const randomBuddy = buddyArray[Math.floor(Math.random() * 5)]
+		console.log(randomBuddy);
+
+
+		const randomInteger = Math.floor(Math.random() * 25)
+		console.log(randomInteger);
+
+
+		// // buttonpicker chooses random buttom
+		const $buttonPicker = $('.numb').eq(randomInteger)
+		console.log($buttonPicker);
+
+		$('#buddy').attr('src', randomBuddy);
+
+		$('#buddy').addClass("active");
+
+		$buttonPicker.append($('#buddy'))
+
+		}
+
+	}
+
 
 }
+
 
 	
 
